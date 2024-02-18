@@ -1,0 +1,169 @@
+,image,text,output,output_parsed,labels,acc
+0,A4,What is the content of this image?,"The image is a black and white diagram featuring a square with a circle inside it. The square is divided into four smaller squares, each with a number in the center. The numbers are arranged in a way that they form a square within the larger square. The overall design creates a visually interesting pattern.",False,True,False
+1,A4,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+2,A4,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+3,A4,How many loops are in this Feynman diagram?,There are four loops in this Feynman diagram.,4,1,False
+4,A4,How many internal edges are in this Feynman diagram?,There are four internal edges in this Feynman diagram.,4,4,True
+5,A4,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,4,True
+6,A4,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are four different types of particles: two electrons and two photons.",4,1,False
+7,B4,What is the content of this image?,"The image features a circle with a line drawn through its center. The circle is divided into four equal parts, and each part is labeled with a letter. The letters are arranged in a clockwise order, starting from the top and moving down to the bottom. The image also includes a numbering system, with the numbers 1, 2, 3, and 4 placed above the corresponding letters. This arrangement suggests that the image is a diagram or a visual representation of a concept or idea.",False,True,False
+8,B4,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a type of diagram used to represent the probability of different paths in quantum mechanics.",True,True,True
+9,B4,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+10,B4,How many loops are in this Feynman diagram?,There are two loops in this Feynman diagram.,2,3,False
+11,B4,How many internal edges are in this Feynman diagram?,There are four internal edges in this Feynman diagram.,4,4,True
+12,B4,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,2,False
+13,B4,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: c and c2.",2,1,False
+14,parachute,What is the content of this image?,"The image is a black and white diagram featuring a series of lines and arrows. The lines are labeled with letters and numbers, indicating that they represent mathematical equations or formulas. The diagram appears to be a visual representation of a mathematical concept or problem.",False,True,False
+15,parachute,Does this image show a Feynman diagram?,Yes,True,True,True
+16,parachute,How many external legs are in this Feynman diagram?,"In the Feynman diagram, there are two external legs.",2,4,False
+17,parachute,How many loops are in this Feynman diagram?,There are two loops in this Feynman diagram.,2,2,True
+18,parachute,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are a total of 12 internal edges.",12,4,False
+19,parachute,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,3,False
+20,parachute,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are three different types of particles: p, q, and c.",3,1,False
+21,acnode,What is the content of this image?,"The image is a diagram of a square with a grid, where each square is labeled with a letter and a number. The grid is divided into four quadrants, and the letters and numbers are arranged in a way that they form a square. The grid is filled with various combinations of letters and numbers, creating a complex pattern.",False,True,False
+22,acnode,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+23,acnode,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+24,acnode,How many loops are in this Feynman diagram?,There are four loops in this Feynman diagram.,4,2,False
+25,acnode,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are four internal edges.",4,5,False
+26,acnode,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,4,True
+27,acnode,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: p and q.",2,1,False
+28,envelope,What is the content of this image?,"The image is a black and white diagram of a cube, with each side of the cube labeled with a letter. The letters are arranged in a way that they form a square, with the top left corner labeled ""P"", the top right corner labeled ""Q"", the bottom left corner labeled ""R"", and the bottom right corner labeled ""S"". The remaining letters are arranged in a grid pattern, with each letter representing a different side of the cube.",False,True,False
+29,envelope,Does this image show a Feynman diagram?,Yes,True,True,True
+30,envelope,How many external legs are in this Feynman diagram?,There are two external legs in this Feynman diagram.,2,4,False
+31,envelope,How many loops are in this Feynman diagram?,There are two loops in this Feynman diagram.,2,3,False
+32,envelope,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are four internal edges.",4,6,False
+33,envelope,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,4,True
+34,envelope,How many different particle types are in this Feynman diagram?,There are two different particle types in this Feynman diagram.,2,1,False
+35,nptrb,What is the content of this image?,"The image is a black and white diagram featuring a series of interconnected triangles. The triangles are labeled with numbers, indicating that they are part of a mathematical equation or problem. The numbers are placed at various points along the triangles, suggesting that they are related to the triangles' properties or calculations. The overall appearance of the image is that of a complex mathematical problem or equation.",False,True,False
+36,nptrb,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a type of diagram used to represent quantum mechanics and the behavior of particles in a system.",True,True,True
+37,nptrb,How many external legs are in this Feynman diagram?,"In the Feynman diagram, there are a total of 12 external legs.",12,4,False
+38,nptrb,How many loops are in this Feynman diagram?,There are four loops in this Feynman diagram.,4,2,False
+39,nptrb,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are a total of 12 internal edges.",12,6,False
+40,nptrb,How many vertices are in this Feynman diagram?,There are 12 vertices in this Feynman diagram.,12,5,False
+41,nptrb,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electrons and photons.",2,1,False
+42,detri,What is the content of this image?,"The image is a black and white diagram featuring a series of equations and mathematical formulas. The diagram is composed of various lines and arrows, which are used to represent the relationships between the equations. The content of the image is focused on the visual representation of mathematical concepts and their interconnections.",False,True,False
+43,detri,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a type of diagram used in quantum mechanics to represent the probability amplitudes of different paths that a particle can take.",True,True,True
+44,detri,How many external legs are in this Feynman diagram?,"In the Feynman diagram, there are two external legs.",2,4,False
+45,detri,How many loops are in this Feynman diagram?,There are two loops in this Feynman diagram.,2,3,False
+46,detri,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are 12 internal edges.",12,5,False
+47,detri,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,3,False
+48,detri,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electrons and photons.",2,1,False
+49,debox,What is the content of this image?,"The image is a black and white diagram featuring a square with a circle in the middle. The circle is labeled with the number ""5"" and is surrounded by various other numbers and letters. The diagram appears to be a mathematical or scientific illustration, possibly related to geometry or trigonometry.",False,True,False
+50,debox,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+51,debox,How many external legs are in this Feynman diagram?,There are two external legs in this Feynman diagram.,2,4,False
+52,debox,How many loops are in this Feynman diagram?,There are three loops in this Feynman diagram.,3,2,False
+53,debox,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are four internal edges.",4,5,False
+54,debox,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,4,True
+55,debox,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: one with a square and one with a circle.",2,1,False
+56,tdebox,What is the content of this image?,"The image is a black and white diagram of a cube, with various letters and numbers labeled on its sides. These letters and numbers represent different mathematical concepts, such as the coordinates of the cube's vertices, the length of its edges, and other mathematical properties. The diagram is designed to help visualize and understand the relationships between these concepts in a three-dimensional space.",False,True,False
+57,tdebox,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+58,tdebox,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+59,tdebox,How many loops are in this Feynman diagram?,There are three loops in this Feynman diagram.,3,3,True
+60,tdebox,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are four internal edges.",4,6,False
+61,tdebox,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,4,True
+62,tdebox,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electron and positron.",2,1,False
+63,ptrb,What is the content of this image?,"The image is a black and white diagram featuring a square with a number of lines and boxes. The diagram appears to be a representation of a mathematical equation or a problem, possibly related to physics or engineering. The lines and boxes are labeled with numbers, which could be variables or coefficients in the equation. The overall structure of the diagram suggests that it is a visual representation of a complex mathematical concept or problem.",False,True,False
+64,ptrb,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+65,ptrb,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+66,ptrb,How many loops are in this Feynman diagram?,There are two loops in this Feynman diagram.,2,2,True
+67,ptrb,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are a total of 12 internal edges.",12,6,False
+68,ptrb,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,5,False
+69,ptrb,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electrons and photons.",2,1,False
+70,dbox,What is the content of this image?,"The image is a black and white diagram of a cube, with each side of the cube labeled with a letter. The letters are arranged in a grid pattern, with some letters appearing more than once. The diagram is a representation of the cube's structure and organization.",False,True,False
+71,dbox,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+72,dbox,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+73,dbox,How many loops are in this Feynman diagram?,There are four loops in this Feynman diagram.,4,2,False
+74,dbox,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are four internal edges.",4,7,False
+75,dbox,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,6,False
+76,dbox,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electrons and photons.",2,1,False
+77,pentb,What is the content of this image?,"The image is a black and white diagram of a chemical structure, featuring a series of boxes with numbers and letters inside them. The boxes are arranged in a grid-like pattern, with some boxes containing numbers and others containing letters. The overall structure appears to be a representation of a chemical compound or a molecule.",False,True,False
+78,pentb,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+79,pentb,How many external legs are in this Feynman diagram?,"In the Feynman diagram, there are four external legs.",4,5,False
+80,pentb,How many loops are in this Feynman diagram?,There are four loops in this Feynman diagram.,4,2,False
+81,pentb,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are a total of 12 internal edges.",12,8,False
+82,pentb,How many vertices are in this Feynman diagram?,"In the Feynman diagram, there are 12 vertices.",12,7,False
+83,pentb,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electrons and photons.",2,1,False
+84,inner-dbox,What is the content of this image?,"The image is a black and white diagram of a circuit board, featuring a square grid with various components and connections. The grid is labeled with numbers, likely representing the coordinates or positions of the components. The diagram showcases the intricate layout and arrangement of the components on the circuit board.",False,True,False
+85,inner-dbox,Does this image show a Feynman diagram?,Yes,True,True,True
+86,inner-dbox,How many external legs are in this Feynman diagram?,There are two external legs in this Feynman diagram.,2,4,False
+87,inner-dbox,How many loops are in this Feynman diagram?,There are 12 loops in this Feynman diagram.,12,2,False
+88,inner-dbox,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are 12 internal edges.",12,7,False
+89,inner-dbox,How many vertices are in this Feynman diagram?,"In the Feynman diagrams, vertices are represented by circles. In the image, there are a total of 12 vertices.",12,6,False
+90,inner-dbox,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different types of particles: electrons and photons.",2,2,True
+91,outer-dbox,What is the content of this image?,"The image is a black and white diagram of a coil spring, which is a type of spring used in various mechanical and electrical applications. The diagram shows the spring's structure and its relationship with the surrounding components. The spring is depicted in a square shape, and the image also includes a numbered grid to help identify specific parts of the spring.",False,True,False
+92,outer-dbox,Does this image show a Feynman diagram?,Yes,True,True,True
+93,outer-dbox,How many external legs are in this Feynman diagram?,There are two external legs in this Feynman diagram.,2,4,False
+94,outer-dbox,How many loops are in this Feynman diagram?,There are two loops in this Feynman diagram.,2,2,True
+95,outer-dbox,How many internal edges are in this Feynman diagram?,There are four internal edges in this Feynman diagram.,4,7,False
+96,outer-dbox,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,6,False
+97,outer-dbox,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different types of particles: electrons and photons.",2,2,True
+98,Hj,What is the content of this image?,"The image is a black and white diagram of a structure, possibly a building or a machine, with various labels and numbers. The labels and numbers are likely used to identify different parts or components of the structure. The diagram is organized in a grid-like pattern, making it easier to understand and analyze the structure.",False,True,False
+99,Hj,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+100,Hj,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+101,Hj,How many loops are in this Feynman diagram?,There are 12 loops in this Feynman diagram.,12,2,False
+102,Hj,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are 12 internal edges.",12,7,False
+103,Hj,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,6,False
+104,Hj,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electrons and photons.",2,3,False
+105,Bhabha-dbox,What is the content of this image?,"The image is a black and white diagram of a circuit board, featuring a series of wires and connections. The diagram is labeled with various numbers, likely representing different components or connections within the circuit. The wires are arranged in a grid-like pattern, with some wires crossing each other, creating a complex network of connections.",False,True,False
+106,Bhabha-dbox,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+107,Bhabha-dbox,How many external legs are in this Feynman diagram?,There are two external legs in this Feynman diagram.,2,4,False
+108,Bhabha-dbox,How many loops are in this Feynman diagram?,There are two loops in this Feynman diagram.,2,2,True
+109,Bhabha-dbox,How many internal edges are in this Feynman diagram?,There are 12 internal edges in this Feynman diagram.,12,7,False
+110,Bhabha-dbox,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,6,False
+111,Bhabha-dbox,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electrons and photons.",2,3,False
+112,Bhabha2-dbox,What is the content of this image?,"The image is a black and white diagram of a circuit board, featuring a series of red and blue wires. The wires are labeled with letters and numbers, indicating their connections and functions within the circuit. The diagram appears to be a representation of a complex electrical circuit, showcasing the interconnected components and their relationships.",False,True,False
+113,Bhabha2-dbox,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the mathematical relationships between different quantum states in a quantum system.",True,True,True
+114,Bhabha2-dbox,How many external legs are in this Feynman diagram?,There are two external legs in this Feynman diagram.,2,4,False
+115,Bhabha2-dbox,How many loops are in this Feynman diagram?,There are two loops in this Feynman diagram.,2,2,True
+116,Bhabha2-dbox,How many internal edges are in this Feynman diagram?,There are 12 internal edges in this Feynman diagram.,12,7,False
+117,Bhabha2-dbox,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,6,False
+118,Bhabha2-dbox,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different types of particles: electrons and photons.",2,3,False
+119,Bhabha-npl-dbox,What is the content of this image?,"The image is a black and white diagram featuring a complex network of lines and connections. The lines are labeled with numbers, indicating that they are part of a mathematical equation or a circuit diagram. The image appears to be a representation of a quantum field, with the lines and connections possibly representing the movement of particles or the flow of energy.",False,True,False
+120,Bhabha-npl-dbox,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+121,Bhabha-npl-dbox,How many external legs are in this Feynman diagram?,There are two external legs in this Feynman diagram.,2,4,False
+122,Bhabha-npl-dbox,How many loops are in this Feynman diagram?,There are three loops in this Feynman diagram.,3,2,False
+123,Bhabha-npl-dbox,How many internal edges are in this Feynman diagram?,There are 12 internal edges in this Feynman diagram.,12,7,False
+124,Bhabha-npl-dbox,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,6,False
+125,Bhabha-npl-dbox,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electrons and photons.",2,3,False
+126,kite,What is the content of this image?,"The image is a geometric diagram featuring a red, blue, and orange triangle. The triangle is divided into smaller triangles, and the image also includes a square with the same color scheme. The triangles and square are labeled with letters, possibly representing mathematical equations or concepts.",False,True,False
+127,kite,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a type of graph used to represent quantum mechanics and the behavior of particles in various systems.",True,True,True
+128,kite,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+129,kite,How many loops are in this Feynman diagram?,There are three loops in this Feynman diagram.,3,2,False
+130,kite,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are a total of 12 internal edges.",12,5,False
+131,kite,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,4,True
+132,kite,How many different particle types are in this Feynman diagram?,There are three different particle types in this Feynman diagram.,3,6,False
+133,par2,What is the content of this image?,"The image is a black and white diagram featuring a series of triangles and lines. The triangles are arranged in a way that creates a visual representation of a mathematical equation. The lines connect the triangles, forming a complex pattern. The image is a close-up view of this intricate diagram, showcasing the details of the triangles and lines.",False,True,False
+134,par2,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram, which is a graphical representation of the probability amplitudes of a quantum system.",True,True,True
+135,par2,How many external legs are in this Feynman diagram?,There are four external legs in this Feynman diagram.,4,4,True
+136,par2,How many loops are in this Feynman diagram?,There are three loops in this Feynman diagram.,3,2,False
+137,par2,How many internal edges are in this Feynman diagram?,There are four internal edges in this Feynman diagram.,4,4,True
+138,par2,How many vertices are in this Feynman diagram?,There are four vertices in this Feynman diagram.,4,3,False
+139,par2,How many different particle types are in this Feynman diagram?,There are three different particle types in this Feynman diagram.,3,7,False
+140,Hj-npl-pentb,What is the content of this image?,"The image is a black and white diagram of a protein structure, with the protein chain represented by a series of lines. The protein chain is labeled with various numbers, likely indicating different amino acids or positions within the protein. The diagram provides a visual representation of the protein's structure and organization.",False,True,False
+141,Hj-npl-pentb,Does this image show a Feynman diagram?,Yes,True,True,True
+142,Hj-npl-pentb,How many external legs are in this Feynman diagram?,"In the Feynman diagram, there are two external legs.",2,5,False
+143,Hj-npl-pentb,How many loops are in this Feynman diagram?,There are three loops in this Feynman diagram.,3,2,False
+144,Hj-npl-pentb,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are a total of 12 internal edges.",12,8,False
+145,Hj-npl-pentb,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,7,False
+146,Hj-npl-pentb,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electron and photon.",2,3,False
+147,dpent,What is the content of this image?,"The image is a black and white diagram of a protein structure, featuring a three-dimensional representation of the protein. The protein is composed of multiple chains, and the image highlights the different sections of the protein, including the amino acids and their corresponding numbers. The diagram provides a detailed view of the protein's structure and organization, making it an informative visual representation for those studying or analyzing proteins.",False,True,False
+148,dpent,Does this image show a Feynman diagram?,Yes,True,True,True
+149,dpent,How many external legs are in this Feynman diagram?,"In the Feynman diagrams, the number of external legs is determined by the number of vertices (joints) in the diagram. In this particular diagram, there are 12 vertices, which means there are 12 external legs.",12,6,False
+150,dpent,How many loops are in this Feynman diagram?,There are four loops in this Feynman diagram.,4,2,False
+151,dpent,How many internal edges are in this Feynman diagram?,"In the Feynman diagram, there are a total of 12 internal edges.",12,9,False
+152,dpent,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,8,False
+153,dpent,How many different particle types are in this Feynman diagram?,"In the Feynman diagram, there are two different particle types: electron and photon.",2,1,False
+154,npl-dpent,What is the content of this image?,"The image is a black and white diagram of a structure, possibly a building or a piece of machinery. The diagram is filled with numbers and letters, which may represent measurements, specifications, or other relevant information about the structure. The numbers and letters are scattered throughout the image, indicating that they are an integral part of the diagram.",False,True,False
+155,npl-dpent,Does this image show a Feynman diagram?,"Yes, the image shows a Feynman diagram.",True,True,True
+156,npl-dpent,How many external legs are in this Feynman diagram?,"In the Feynman diagram, there are two external legs.",2,6,False
+157,npl-dpent,How many loops are in this Feynman diagram?,The Feynman diagram in the image has 12 loops.,12,2,False
+158,npl-dpent,How many internal edges are in this Feynman diagram?,The Feynman diagram in the image has 12 internal edges.,12,9,False
+159,npl-dpent,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,8,False
+160,npl-dpent,How many different particle types are in this Feynman diagram?,"In the Feynman diagrams, there are only two different types of particles: fermions and bosons. The diagram in the image represents a fermion-boson interaction, which means there are two different types of particles involved.",2,1,False
+161,npl-dpent2,What is the content of this image?,"The image is a black and white diagram of a chain link fence. The fence is made up of interconnected links, and the image shows the pattern of the links. The fence is divided into sections, with each section labeled with a letter or number. The labels are placed at the top of the image, indicating the different sections of the fence.",False,True,False
+162,npl-dpent2,Does this image show a Feynman diagram?,Yes,True,True,True
+163,npl-dpent2,How many external legs are in this Feynman diagram?,"In the Feynman diagram, there are two external legs.",2,6,False
+164,npl-dpent2,How many loops are in this Feynman diagram?,The Feynman diagram in the image has 12 loops.,12,2,False
+165,npl-dpent2,How many internal edges are in this Feynman diagram?,The Feynman diagram in the image has 12 internal edges.,12,9,False
+166,npl-dpent2,How many vertices are in this Feynman diagram?,The Feynman diagram in the image has 12 vertices.,12,8,False
+167,npl-dpent2,How many different particle types are in this Feynman diagram?,"In the Feynman diagrams, there are two different types of particles: electrons and photons. The diagram in the image represents the interaction between these two types of particles.",2,1,False
