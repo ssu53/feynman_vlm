@@ -1,0 +1,8 @@
+,question
+0,What is the content of this image?
+1,Does this image show a Feynman diagram?
+2,How many external legs are in this Feynman diagram?
+3,How many loops are in this Feynman diagram?
+4,How many internal edges are in this Feynman diagram?
+5,How many vertices are in this Feynman diagram?
+6,How many different particle types are in this Feynman diagram?
