@@ -3,6 +3,7 @@
 
 slurm_scripts/errors/
 slurm_scripts/outputs/
+nohup_out/
 
 data/pld
 data_arxiv/feynman_in_caption/
@@ -11,3 +12,5 @@ data_classification/all/
 data_classification/no/
 data_classification/yes_single/
 data_classification/yes_multiple/
+
+openai_api_key.txt
