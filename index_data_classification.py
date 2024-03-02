@@ -28,8 +28,8 @@ for path_sub in ['no', 'yes_single', 'yes_multiple']:
 
     for fn in path.iterdir():
         
-        assert fn.stem not in labels.index, f"Name confict {fn.stem}"
-        labels.loc[fn.stem, 'src'] = path_sub
+        assert fn.name not in labels.index, f"Name confict {fn.name}"
+        labels.loc[fn.name, 'src'] = path_sub
 
         # img = Image.open(fn)
         # display(img)
