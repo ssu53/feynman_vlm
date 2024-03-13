@@ -1,5 +1,5 @@
-# %%
-
+import numpy as np
+import random
 import torch
 import pandas as pd
 from PIL import Image
@@ -7,6 +7,18 @@ from tqdm.auto import tqdm
 from transformers import AutoProcessor, LlavaForConditionalGeneration, AutoTokenizer
 import argparse
 from tqdm import tqdm
+
+from easydict import EasyDict
+
+
+
+def set_seed(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
 
 
@@ -31,15 +43,28 @@ def transparent_to_white(image):
 
 def main():
 
+
+    # args = EasyDict(
+    #     model_path = "llava-hf/llava-1.5-7b-hf",
+    #     cache_dir = "/scratch/shiyesu/.cache/huggingface/hub",
+    #     data_index_fn = "dataset_index/FeynEval-E/data.csv",
+    #     image_dir = "dataset/FeynEval-E/all",
+    #     out_fn = "results/llava-1.5-7b-hf",
+    #     seed = 42,
+    #     quantise = False,
+    #     verbose = True,
+    # )
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_path", help="Model path", type=str, 
                         default="llava-hf/llava-1.5-7b-hf")
-    parser.add_argument("--cache_dir", help="Hugginface cache dir", type=str, 
+    parser.add_argument("--cache_dir", help="Hugging Face cache dir", type=str, 
                         default="/scratch/shiyesu/.cache/huggingface/hub")
-    parser.add_argument("--data_index_fn", type=str, default="data/data.csv")
-    parser.add_argument("--image_dir", type=str, default="data/pld")
-    parser.add_argument("--out_dir", type=str, default="results")
-    parser.add_argument("--quantise", type=bool, help="Whether to run with bitsandbytes quantisation", default=True)
+    parser.add_argument("--data_index_fn", type=str, default="dataset_index/FeynEval-E/data.csv")
+    parser.add_argument("--image_dir", type=str, default="dataset/FeynEval-E/all")
+    parser.add_argument("--out_fn", type=str, default="results/llava")
+    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--quantise", type=bool, help="Run with bitsandbytes quantisation", default=False)
     parser.add_argument("--verbose", type=bool, default=True)
     args = parser.parse_args()
 
@@ -47,6 +72,9 @@ def main():
 
 
     assert args.model_path in ["llava-hf/llava-1.5-7b-hf", "llava-hf/llava-1.5-13b-hf"]
+
+
+    set_seed(args.seed)
 
 
     if args.quantise:
@@ -86,17 +114,23 @@ def main():
         text = prompt(dat.text)
         image = Image.open(f"{args.image_dir}/{dat.image}")
 
-        inputs = processor(text=text, images=image, return_tensors="pt")
-        if args.quantise: inputs = inputs.to('cuda')
-        else: inputs = inputs.to(device)
+        try: 
 
-        generate_ids = model.generate(**inputs, max_length=128)
-        output = tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
+            inputs = processor(text=text, images=image, return_tensors="pt")
+            if args.quantise: inputs = inputs.to('cuda')
+            else: inputs = inputs.to(device)
 
-        data.loc[ind,"output"] = parse_output(output)
+            generate_ids = model.generate(**inputs, max_length=128)
+            output = tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
+
+            data.loc[ind,"output"] = parse_output(output)
 
 
-        data.to_csv(f"{args.out_dir}/{args.model_path.split('/')[-1]}.csv")
+            data.to_csv(f"{args.out_fn}.csv")
+        
+        except:
+            # TODO: handle
+            print(f"FAILED at index {ind}, {dat.image}, {dat.text}")
 
         pbar.update(1)
 

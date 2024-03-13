@@ -5,12 +5,13 @@ slurm_scripts/errors/
 slurm_scripts/outputs/
 nohup_out/
 
-data/pld
-data_arxiv/feynman_in_caption/
-data_arxiv/feynman_in_paragraph_10k/
-data_classification/all/
-data_classification/no/
-data_classification/yes_single/
-data_classification/yes_multiple/
+dataset/pld
+dataset/arxiv/feynman_in_caption/
+dataset/arxiv/feynman_in_paragraph_10k/
+dataset/FeynEval-E/all/
+dataset/FeynEval-E/no/
+dataset/FeynEval-E/yes_single/
+dataset/FeynEval-E/yes_multiple/
+dataset/FeynEval-M/diagrams
 
 openai_api_key.txt

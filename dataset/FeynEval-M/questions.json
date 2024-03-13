@@ -1,0 +1,10 @@
+[
+	{
+		"figure": "[PROMPT FOR THE DIAGRAM]",
+		"loops": "How many independent loops are there in the diagram?",
+		"legs": "How many external legs are there in the diagram?",
+		"edges": "How many internal edges are there in the diagram?",
+		"vertices": "How many interaction vertices are there in the diagram?",
+		"kinds": "How many different kinds of particles are there in the diagram?"
+	}
+]
