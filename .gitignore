@@ -13,5 +13,6 @@ dataset/FeynEval-E/no/
 dataset/FeynEval-E/yes_single/
 dataset/FeynEval-E/yes_multiple/
 dataset/FeynEval-M/diagrams
+dataset/FeynEval-MH-March17/diagrams
 
 openai_api_key.txt

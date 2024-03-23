@@ -47,7 +47,7 @@ def get_header(api_key = None, reset_api_key: bool = False):
 
 
 
-def get_payload(text, image, image_dir, max_tokens: int = 300):
+def get_payload(text, image, image_dir, max_tokens: int = 300, detail: str = "auto"):
     """
     Args
         image_dir: directory to fetch the images
@@ -71,7 +71,8 @@ def get_payload(text, image, image_dir, max_tokens: int = 300):
                 {
                 "type": "image_url",
                 "image_url": {
-                    "url": f"data:image/jpeg;base64,{base64_image}"
+                    "url": f"data:image/jpeg;base64,{base64_image}",
+                    "detail": detail,
                 }
                 }
             ]
@@ -96,9 +97,10 @@ def main():
 
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_index_fn", type=str, default="data/data.csv")
-    parser.add_argument("--image_dir", type=str, default="data/pld")
+    parser.add_argument("--data_index_fn", type=str, default="dataset_index/FeynEval-E/data.csv")
+    parser.add_argument("--image_dir", type=str, default="dataset/FeynEval-E/all")
     parser.add_argument("--max_tokens", type=int, default=300)
+    parser.add_argument("--detail", type=str, default="auto")
     parser.add_argument("--out_fn", type=str, default="results/gpt4v")
     parser.add_argument("--verbose", type=bool, default=True)
     args = parser.parse_args()
@@ -126,10 +128,12 @@ def main():
         payload = get_payload(
             dat.text, 
             dat.image, 
-            image_dir=args.image_dir, 
+            image_dir = args.image_dir, 
             max_tokens = args.max_tokens,
+            detail = args.detail,
         )
 
+        print(dat.image, dat.text)
         
         response = requests.post(
             "https://api.openai.com/v1/chat/completions",

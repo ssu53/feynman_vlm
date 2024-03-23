@@ -64,7 +64,7 @@ def main():
     parser.add_argument("--image_dir", type=str, default="dataset/FeynEval-E/all")
     parser.add_argument("--out_fn", type=str, default="results/llava")
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--quantise", type=bool, help="Run with bitsandbytes quantisation", default=False)
+    parser.add_argument("--quantise", help="Run with bitsandbytes quantisation", action='store_true')
     parser.add_argument("--verbose", type=bool, default=True)
     args = parser.parse_args()
 
@@ -91,7 +91,7 @@ def main():
             args.model_path,
             cache_dir=args.cache_dir,
         )
-        device = torch.device('cuda:7' if torch.cuda.is_available() else 'cpu')
+        device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
         # device = torch.device('cpu')
         model.to(device)
     
@@ -120,7 +120,7 @@ def main():
             if args.quantise: inputs = inputs.to('cuda')
             else: inputs = inputs.to(device)
 
-            generate_ids = model.generate(**inputs, max_length=128)
+            generate_ids = model.generate(**inputs, max_new_tokens=128)
             output = tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
 
             data.loc[ind,"output"] = parse_output(output)
