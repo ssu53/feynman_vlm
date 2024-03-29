@@ -3,6 +3,7 @@ import base64
 import requests
 
 import pandas as pd
+from utils import instructify
 
 from easydict import EasyDict
 from tqdm import tqdm
@@ -101,6 +102,7 @@ def main():
     parser.add_argument("--image_dir", type=str, default="dataset/FeynEval-E/all")
     parser.add_argument("--max_tokens", type=int, default=300)
     parser.add_argument("--detail", type=str, default="auto")
+    parser.add_argument("--instructify", type=str, default="none")
     parser.add_argument("--out_fn", type=str, default="results/gpt4v")
     parser.add_argument("--verbose", type=bool, default=True)
     args = parser.parse_args()
@@ -126,7 +128,7 @@ def main():
     for ind,dat in data.iterrows():
 
         payload = get_payload(
-            dat.text, 
+            instructify(dat.text, args.instructify), 
             dat.image, 
             image_dir = args.image_dir, 
             max_tokens = args.max_tokens,

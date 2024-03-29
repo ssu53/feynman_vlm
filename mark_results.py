@@ -1,7 +1,6 @@
 # %%
 
 import pandas as pd
-from PIL import Image
 import re
 from utils import INTEGER_QUESTIONS, YESNO_QUESTIONS, KEYWORD_QUESTIONS
 
@@ -13,10 +12,14 @@ ACC_COL = "acc"
 
 # benchmark = "pld"
 # benchmark = "FeynEval-E"
-benchmark = "FeynEval-M"
+# benchmark = "FeynEval-M"
+# benchmark = "FeynEval-M-v2"
+benchmark = "FeynEval-H"
 
 # model = "llava-1.5-7b-hf"
 model = "llava-1.5-13b-hf"
+# model = "gpt4v_instructify_int"
+# model = "gpt4v_instructify_mc4"
 
 results_file = f"{benchmark}_{model}.csv"
 
@@ -24,6 +27,7 @@ print(results_file)
 
 results = pd.read_csv(f"results_raw/{results_file}", index_col=0)
 
+# %%
 
 def parse_integer(text, suffix=None):
 
@@ -75,11 +79,13 @@ def parse_integer(text, suffix=None):
             if len(ans) == 1: return ans.pop()
         print(text)
         print(ans)
+        print("---------------------------------")
         return None
 
     # failed to find any matches
     print(text)
     print(ans)
+    print("---------------------------------")
     return None
     
 
@@ -105,6 +111,26 @@ def parse_keyword(text, keywords=["feynman", "Feynman"]):
     for kw in keywords:
         if kw in text: return True
     return False
+
+
+
+def parse_mc4(text):
+
+    if text in ["A", "B", "C", "D"]:
+        return text
+
+    ans = []
+    if "A)" in text: ans.append("A")
+    if "B)" in text: ans.append("B")
+    if "C)" in text: ans.append("C")
+    if "D)" in text: ans.append("D")
+
+    if len(ans) != 1:
+        print(text)
+        print(ans)
+        return None
+
+    return ans.pop()
 
 # %%
 
@@ -152,7 +178,7 @@ if benchmark == "FeynEval-E":
             results.loc[ind,LABEL_COL] = False if row.src == "no" else True
 
 
-if benchmark == "FeynEval-M":
+if benchmark == "FeynEval-M" or benchmark == "FeynEval-M-v2":
 
     labels = pd.read_csv(f"dataset_index/{benchmark}/labels.csv", index_col=0)
 
@@ -161,6 +187,10 @@ if benchmark == "FeynEval-M":
 
     for ind,row in results.iterrows():
 
+        if row.output.startswith("I'm sorry") or row.output.startswith("Sorry, I can't"):
+            results.loc[ind,PARSE_COL] = None
+            continue
+        
         if row.text in INTEGER_QUESTIONS:
             results.loc[ind,PARSE_COL] = parse_integer(
                 row.output,
@@ -178,105 +208,32 @@ if benchmark == "FeynEval-M":
             results.loc[ind,LABEL_COL] = labels.loc[row.image, mapping[row.text]]
 
 
-# %%
+if benchmark == "FeynEval-H":
 
-# # ------------------------------------------------------
-# # save down results
-# # do any manual parsing
-# # place final results in results_graded/
+    labels = pd.read_csv(f"dataset_index/{benchmark}/labels.csv", index_col=0)
 
-# results.to_csv(f"results_scratch_{results_file}")
-# results = pd.read_csv(f"results_scratch_{results_file}", index_col=0)
+    for ind,row in results.iterrows():
+        results.loc[ind,PARSE_COL] = parse_mc4(row.output)
+        results.loc[ind,LABEL_COL] = labels.loc[row.image, "integral"]
 
-# # DO ANY MANUAL PARSING AND PUT RESULTS IN results_graded/
-
-# results = pd.read_csv(f"results_graded/{results_file}", index_col=0)
-
-# results[ACC_COL] = (results[PARSE_COL] == results[LABEL_COL]).mask(results[PARSE_COL].isna(), None)
-
-# results.to_csv(f"results_graded/{results_file}")
 
 # %%
 
-results = pd.read_csv(f"results_graded/{results_file}", index_col=0)
+# ------------------------------------------------------
+# save down results
+# do any manual parsing
+# place final results in results_graded/
 
+results.to_csv(f"results_scratch_{results_file}")
+results = pd.read_csv(f"results_scratch_{results_file}", index_col=0)
 
-if benchmark == "pld":
-    
-    def get_summary(results):
-        df_summary = pd.DataFrame(
-            index=results.text.unique(),
-            columns=[benchmark],
-        )
-
-        for ind in df_summary.index:
-            res = results[results.text == ind]
-            df_summary.loc[ind,benchmark] = res[ACC_COL].mean()
-
-
-        return df_summary
-
-    display(get_summary(results).style.format("{:.2f}"))
-
-
-
-if benchmark == "FeynEval-E":
-
-    def get_summary(results):
-
-        df_summary = pd.DataFrame(
-            index=results.text.unique(),
-            columns=results.src.unique(),
-        )
-
-        for ind in df_summary.index:
-            res = results[results.text == ind]
-            for col in df_summary.columns:
-                df_summary.loc[ind,col] = res[res.src == col][ACC_COL].mean()
-
-
-        return df_summary
-
-    display(get_summary(results).style.format("{:.2f}"))
-
-
-
-
-if benchmark == "FeynEval-M":
-
-    def get_summary(results):
-
-        df_summary = pd.DataFrame(
-            index=results.text.unique(),
-            columns=[benchmark, "NO RESPONSE PARSED"],
-        )
-
-        for ind in df_summary.index:
-            res = results[results.text == ind]
-            df_summary.loc[ind,benchmark] = res[ACC_COL].mean()
-            df_summary.loc[ind,"NO RESPONSE PARSED"] = res[ACC_COL].isna().mean()
-
-
-        return df_summary
-
-    display(get_summary(results).style.format("{:.3f}"))
-# %%
-
-def see_example(results, num_samples=1):
-
-    path = f"dataset/{benchmark}/"
-    path += "all/" if benchmark == "FeynEval-E" else \
-            "diagrams/" if benchmark == "FeynEval-M" else \
-            ""
-
-    for ind in results.sample(num_samples).index:
-        print("ind", ind)
-        img = Image.open(path + results.image[ind])
-        display(img)
-        for col in results.columns:
-            print(f"{col}: {results.loc[ind,col]}")
+# DO ANY MANUAL PARSING AND PUT RESULTS IN results_graded/
 
 # %%
 
-see_example(results)
+results = pd.read_csv(f"results_scratch_{results_file}", index_col=0)
+
+results[ACC_COL] = (results[PARSE_COL] == results[LABEL_COL]).mask(results[PARSE_COL].isna(), None)
+
+results.to_csv(f"results_scratch_{results_file}")
 # %%

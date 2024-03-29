@@ -1,5 +1,3 @@
-import numpy as np
-import random
 import torch
 import pandas as pd
 from PIL import Image
@@ -7,36 +5,19 @@ from tqdm.auto import tqdm
 from transformers import AutoProcessor, LlavaForConditionalGeneration, AutoTokenizer
 import argparse
 from tqdm import tqdm
+from utils import instructify, set_seed
 
 from easydict import EasyDict
 
 
 
-def set_seed(seed):
-    random.seed(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-
-
-
-def prompt(text):
+def prompt_llava(text):
     return f"<image>\nUSER: {text}\nASSISTANT:"
 
 
 
-def parse_output(text):
+def parse_output_llava(text):
     return text.split('ASSISTANT: ')[-1]
-
-
-
-def transparent_to_white(image):
-    new_image = Image.new("RGBA", image.size, "WHITE")
-    new_image.paste(image, (0, 0), image)
-    new_image.convert('RGB')
-    return new_image
 
 
 
@@ -63,6 +44,7 @@ def main():
     parser.add_argument("--data_index_fn", type=str, default="dataset_index/FeynEval-E/data.csv")
     parser.add_argument("--image_dir", type=str, default="dataset/FeynEval-E/all")
     parser.add_argument("--out_fn", type=str, default="results/llava")
+    parser.add_argument("--instructify", type=str, default="none")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--quantise", help="Run with bitsandbytes quantisation", action='store_true')
     parser.add_argument("--verbose", type=bool, default=True)
@@ -111,7 +93,7 @@ def main():
 
     for ind,dat in data.iterrows():
 
-        text = prompt(dat.text)
+        text = prompt_llava(instructify(dat.text, args.instructify))
         image = Image.open(f"{args.image_dir}/{dat.image}")
 
         try: 
@@ -123,14 +105,14 @@ def main():
             generate_ids = model.generate(**inputs, max_new_tokens=128)
             output = tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
 
-            data.loc[ind,"output"] = parse_output(output)
+            data.loc[ind,"output"] = parse_output_llava(output)
 
 
             data.to_csv(f"{args.out_fn}.csv")
         
         except:
             # TODO: handle
-            print(f"FAILED at index {ind}, {dat.image}, {dat.text}")
+            print(f"FAILED at index {ind}, {dat.image}, {text}")
 
         pbar.update(1)
 
