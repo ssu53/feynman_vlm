@@ -109,18 +109,43 @@ def summarise_feynevale(results, by_src=True):
 
 
 
-def summarise_feynevalm(results):
+def summarise_feynevalm(results, by_loop=False):
 
-    df_summary = pd.DataFrame(
-        index=results.text.unique(),
-        columns=[ACC_EXCL_NAN_COL, ACC_INCL_NAN_COL, NO_RESP_COL],
-    )
+    if by_loop:
+        
+        image_to_loop =  {x.image: int(x.labels) for _,x in results[results.text == "How many independent loops are there in the diagram?"].iterrows()}
 
-    for ind in df_summary.index:
-        res = results[results.text == ind]
-        df_summary.loc[ind,ACC_EXCL_NAN_COL] = res[ACC_COL].mean()
-        df_summary.loc[ind,ACC_INCL_NAN_COL] = res[ACC_COL].fillna(False).mean()
-        df_summary.loc[ind,NO_RESP_COL] = res[ACC_COL].isna().mean()
+        loops = set(image_to_loop.values())
+        dfs = []
+
+        for loop in loops:
+            df_summary = pd.DataFrame(
+                index=results.text.unique(),
+                columns=[ACC_EXCL_NAN_COL, ACC_INCL_NAN_COL, NO_RESP_COL],
+            )
+
+            for ind in df_summary.index:
+                res = results[(results.text == ind) & (results.image.apply(lambda x: image_to_loop[x] == loop))]                
+                df_summary.loc[ind,ACC_EXCL_NAN_COL] = res[ACC_COL].mean()
+                df_summary.loc[ind,ACC_INCL_NAN_COL] = res[ACC_COL].fillna(False).mean()
+                df_summary.loc[ind,NO_RESP_COL] = res[ACC_COL].isna().mean()
+
+            dfs.append(df_summary)
+        
+        df_summary = pd.concat(dfs, axis=0, keys=loops)
+
+
+    else:
+        df_summary = pd.DataFrame(
+            index=results.text.unique(),
+            columns=[ACC_EXCL_NAN_COL, ACC_INCL_NAN_COL, NO_RESP_COL],
+        )
+
+        for ind in df_summary.index:
+            res = results[results.text == ind]
+            df_summary.loc[ind,ACC_EXCL_NAN_COL] = res[ACC_COL].mean()
+            df_summary.loc[ind,ACC_INCL_NAN_COL] = res[ACC_COL].fillna(False).mean()
+            df_summary.loc[ind,NO_RESP_COL] = res[ACC_COL].isna().mean()
 
 
     return df_summary
@@ -185,7 +210,7 @@ if __name__ == "__main__":
     if benchmark == "FeynEval-E":
         df_summary = summarise_feynevale(results, by_src=True)
     if benchmark == "FeynEval-M" or benchmark == "FeynEval-M-v2":
-        df_summary = summarise_feynevalm(results)
+        df_summary = summarise_feynevalm(results, by_loop=True)
     if benchmark == "FeynEval-H":
         df_summary = summarise_feynevalh(results)
 
@@ -194,5 +219,4 @@ if __name__ == "__main__":
     see_example(results, num_samples=3)
 
 
-    
 # %%

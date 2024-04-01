@@ -24,15 +24,15 @@ def parse_output_llava(text):
 
 def main():
 
-
     # args = EasyDict(
-    #     model_path = "llava-hf/llava-1.5-7b-hf",
+    #     model_path = "llava-hf/llava-1.5-13b-hf",
     #     cache_dir = "/scratch/shiyesu/.cache/huggingface/hub",
-    #     data_index_fn = "dataset_index/FeynEval-E/data.csv",
-    #     image_dir = "dataset/FeynEval-E/all",
-    #     out_fn = "results/llava-1.5-7b-hf",
+    #     data_index_fn = "dataset_index/FeynEval-H/data.csv",
+    #     image_dir = "dataset/FeynEval-MH-March17/diagrams",
+    #     out_fn = "results/FeynEval-H_llava-1.5-13b-hf_ATTEMPT2",
+    #     instructify = "none",
     #     seed = 42,
-    #     quantise = False,
+    #     quantise = True,
     #     verbose = True,
     # )
 
@@ -63,7 +63,7 @@ def main():
         model = LlavaForConditionalGeneration.from_pretrained(
             args.model_path,
             cache_dir=args.cache_dir,
-            torch_dtype=torch.float16, 
+            torch_dtype=torch.bfloat16, 
             low_cpu_mem_usage=True,
             load_in_4bit=True,
             bnb_4bit_compute_dtype=torch.bfloat16,
@@ -72,6 +72,7 @@ def main():
         model = LlavaForConditionalGeneration.from_pretrained(
             args.model_path,
             cache_dir=args.cache_dir,
+            # device_map="auto",
         )
         device = torch.device('cuda:1' if torch.cuda.is_available() else 'cpu')
         # device = torch.device('cpu')
@@ -96,26 +97,20 @@ def main():
         text = prompt_llava(instructify(dat.text, args.instructify))
         image = Image.open(f"{args.image_dir}/{dat.image}")
 
-        try: 
+        inputs = processor(text=text, images=image, return_tensors="pt")
+        if args.quantise: inputs = inputs.to('cuda')
+        else: inputs = inputs.to(device)
 
-            inputs = processor(text=text, images=image, return_tensors="pt")
-            if args.quantise: inputs = inputs.to('cuda')
-            else: inputs = inputs.to(device)
+        generate_ids = model.generate(**inputs, max_new_tokens=128)
+        output = tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
 
-            generate_ids = model.generate(**inputs, max_new_tokens=128)
-            output = tokenizer.batch_decode(generate_ids, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
-
-            data.loc[ind,"output"] = parse_output_llava(output)
+        data.loc[ind,"output"] = parse_output_llava(output)
 
 
-            data.to_csv(f"{args.out_fn}.csv")
-        
-        except:
-            # TODO: handle
-            print(f"FAILED at index {ind}, {dat.image}, {text}")
+        data.to_csv(f"{args.out_fn}.csv")
+
 
         pbar.update(1)
-
 
 
 if __name__ == "__main__":

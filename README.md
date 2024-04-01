@@ -14,6 +14,8 @@ pip install tqdm
 pip install numpy
 pip install pandas
 pip install pillow
+pip install sentencepiece
+pip install protobuf
 pip install bitsandbytes
 pip install accelerate
 pip install openai
