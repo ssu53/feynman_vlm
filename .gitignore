@@ -8,6 +8,8 @@ nohup_out/
 dataset/pld
 dataset/arxiv/feynman_in_caption/
 dataset/arxiv/feynman_in_paragraph_10k/
+dataset/arxiv/feynman_in_caption.json
+dataset/arxiv/feynman_in_paragraph_10k.json
 dataset/FeynEval-E/all/
 dataset/FeynEval-E/no/
 dataset/FeynEval-E/yes_single/
